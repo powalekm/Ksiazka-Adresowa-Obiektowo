@@ -15,9 +15,7 @@ using namespace std;
 class PlikZUzytkownikami
 {
     string nazwaPlikuZUzytkownikami;
-    fstream plikTekstowy;
-
-    bool czyPlikJestPusty();
+    bool czyPlikJestPusty(fstream &plikTekstowy);
     string zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik);
 
 public:
