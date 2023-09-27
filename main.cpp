@@ -28,17 +28,22 @@ int main() {
                 break;
             }
         } else {
+            if (ksiazkaAdresowa.czyAdresaciZostaliWczytani() == false) {
+                ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
+            }
 
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
 
             switch (wybor) {
             case '1':
+                ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
                 break;
             case '2':
                 break;
             case '3':
                 break;
             case '4':
+                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
             case '5':
                 break;
