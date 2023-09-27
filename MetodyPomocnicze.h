@@ -12,6 +12,7 @@ class MetodyPomocnicze
 public:
     static string konwerjsaIntNaString(int liczba);
     static string wczytajLinie();
+    static char wczytajZnak();
     static bool porownanieZnakow(string pierwszyCiagZnakow, string drugiCiagZnakow);
 };
 
