@@ -62,11 +62,12 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
-    cout << endl << "Podaj login: " << endl;
-    uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
-
     unsigned int i = 0;
     while (i < uzytkownicy.size()) {
+
+        cout << endl << "Podaj login: " << endl;
+        uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
+
         if (MetodyPomocnicze::porownanieZnakow(uzytkownik.pobierzLogin(), uzytkownicy[i].pobierzLogin())) {
             for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
                 cout << "Podaj haslo: " << endl;
@@ -81,10 +82,15 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
             return 0;
+        } else {
+            cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+            system("pause");
+            return 0;
         }
         i++;
+
     }
-    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    cout << "Brak uzytkownikow w systemie." << endl << endl;
     system("pause");
     return 0;
 }
@@ -108,7 +114,7 @@ string UzytkownikMenedzer::pobierzLoginZalogowanegoUzytkownika() {
     }
 }
 
-int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika(){
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
     return idZalogowanegoUzytkownika;
 }
 

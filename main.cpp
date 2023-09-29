@@ -8,14 +8,10 @@ using namespace std;
 int main() {
     char wybor = '0';
 
-    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
+    KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     do {
         if(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0) {
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
-
-            cin.clear();
-            cin.sync();
-
             switch(wybor) {
             case '1':
                 ksiazkaAdresowa.rejestracjaUzytkownika();

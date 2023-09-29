@@ -1,14 +1,15 @@
 #include "MetodyPomocnicze.h"
 
-string MetodyPomocnicze::wczytajLinie()
-{
+string MetodyPomocnicze::wczytajLinie() {
+
+    cin.clear();
+    cin.sync();
     string wejscie = "";
     getline(cin, wejscie);
     return wejscie;
 }
 
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
-{
+string MetodyPomocnicze::konwerjsaIntNaString(int liczba) {
     ostringstream ss;
     ss << liczba;
     string str = ss.str();
@@ -26,15 +27,15 @@ bool MetodyPomocnicze::porownanieZnakow(string pierwszyCiagZnakow, string drugiC
     return false;
 }
 
-char MetodyPomocnicze::wczytajZnak()
-{
+char MetodyPomocnicze::wczytajZnak() {
+
+    cin.clear();
+    cin.sync();
     string wejscie = "";
     char znak  = {0};
-    while (true)
-    {
+    while (true) {
         getline(cin, wejscie);
-        if (wejscie.length() == 1)
-        {
+        if (wejscie.length() == 1) {
             znak = wejscie[0];
             break;
         }
@@ -44,11 +45,12 @@ char MetodyPomocnicze::wczytajZnak()
 }
 
 
-string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
+string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
+
+    cin.clear();
+    cin.sync();
     string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
-    {
+    while(isdigit(tekst[pozycjaZnaku]) == true) {
         liczba += tekst[pozycjaZnaku];
         pozycjaZnaku ++;
     }
@@ -56,8 +58,7 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
 }
 
 
-int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
-{
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba) {
     int liczbaInt;
     istringstream iss(liczba);
     iss >> liczbaInt;
