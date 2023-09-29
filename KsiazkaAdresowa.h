@@ -10,8 +10,7 @@ class KsiazkaAdresowa {
     AdresatMenedzer adresatMenedzer;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami) {
-        //(string nazwaPlikuZAdresatami) : adresatMenedzer(nazwaPlikuZAdresatami) {
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami){
         uzytkownikMenedzer.wczytajUzytkownikowZPliku();
         uzytkownikMenedzer.ustawIdZalogowanegoUzytkownika(0);
     };
@@ -30,6 +29,4 @@ public:
     bool czyAdresaciZostaliWczytani();
     void dodajAdresata(int IdZalogowanegoUzytkownika);
     void wyswietlWszystkichAdresatow();
-
-
 };
