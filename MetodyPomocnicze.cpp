@@ -1,10 +1,9 @@
 #include "MetodyPomocnicze.h"
 
 string MetodyPomocnicze::wczytajLinie() {
-
+    string wejscie = "";
     cin.clear();
     cin.sync();
-    string wejscie = "";
     getline(cin, wejscie);
     return wejscie;
 }
@@ -28,7 +27,6 @@ bool MetodyPomocnicze::porownanieZnakow(string pierwszyCiagZnakow, string drugiC
 }
 
 char MetodyPomocnicze::wczytajZnak() {
-
     cin.clear();
     cin.sync();
     string wejscie = "";
@@ -46,7 +44,6 @@ char MetodyPomocnicze::wczytajZnak() {
 
 
 string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
-
     cin.clear();
     cin.sync();
     string liczba = "";

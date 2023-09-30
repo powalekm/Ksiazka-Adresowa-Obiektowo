@@ -15,21 +15,18 @@ int main() {
             switch(wybor) {
             case '1':
                 ksiazkaAdresowa.rejestracjaUzytkownika();
-                system("cls");
+
                 break;
             case '2':
                 ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
                 ksiazkaAdresowa.logowanieUzytkownika();
-                system("cls");
                 break;
             }
         } else {
             if (ksiazkaAdresowa.czyAdresaciZostaliWczytani() == false) {
                 ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
             }
-
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
-
             switch (wybor) {
             case '1':
                 ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
@@ -52,8 +49,6 @@ int main() {
                 ksiazkaAdresowa.wylogowanieUzytkownika();
                 break;
             }
-
-
         }
     } while(wybor != '9');
     cout << "Program zostaje Wylaczony." << endl;

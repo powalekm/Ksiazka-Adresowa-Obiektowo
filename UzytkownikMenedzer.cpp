@@ -8,6 +8,7 @@ void UzytkownikMenedzer::rejestracjaUzytkownika() {
 
     cout << endl << "Konto zostalo zalozone pomyslnie!" << endl << endl;
     system("pause");
+    system("cls");
 }
 
 Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika() {
@@ -44,7 +45,6 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login) {
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     if (uzytkownicy.empty()) {
         cout << endl << "Brak uzytkownikow w systemie." << endl << endl;
-
     } else {
         for(unsigned int i = 0; i <uzytkownicy.size(); i++) {
             cout << uzytkownicy[i].pobierzId() << endl;
@@ -81,17 +81,19 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
+            system("cls");
             return 0;
         } else {
             cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
             system("pause");
+            system("cls");
             return 0;
         }
         i++;
-
     }
     cout << "Brak uzytkownikow w systemie." << endl << endl;
     system("pause");
+    system("cls");
     return 0;
 }
 
