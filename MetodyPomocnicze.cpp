@@ -2,7 +2,6 @@
 
 string MetodyPomocnicze::wczytajLinie() {
     string wejscie = "";
-    cin.clear();
     cin.sync();
     getline(cin, wejscie);
     return wejscie;
@@ -27,7 +26,6 @@ bool MetodyPomocnicze::porownanieZnakow(string pierwszyCiagZnakow, string drugiC
 }
 
 char MetodyPomocnicze::wczytajZnak() {
-    cin.clear();
     cin.sync();
     string wejscie = "";
     char znak  = {0};
@@ -44,8 +42,6 @@ char MetodyPomocnicze::wczytajZnak() {
 
 
 string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
-    cin.clear();
-    cin.sync();
     string liczba = "";
     while(isdigit(tekst[pozycjaZnaku]) == true) {
         liczba += tekst[pozycjaZnaku];

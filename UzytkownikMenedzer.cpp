@@ -101,11 +101,12 @@ string UzytkownikMenedzer::pobierzLoginZalogowanegoUzytkownika() {
 
     unsigned int i = 0;
     while (i < uzytkownicy.size()) {
-        if (idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId()) {
+        if (idZalogowanegoUzytkownika == uzytkownicy[i].pobierzId()) {
             return uzytkownicy[i].pobierzLogin();
         }
         i++;
     }
+    return 0;
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
