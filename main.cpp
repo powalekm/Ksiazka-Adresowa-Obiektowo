@@ -15,22 +15,16 @@ int main() {
             switch(wybor) {
             case '1':
                 ksiazkaAdresowa.rejestracjaUzytkownika();
-
                 break;
             case '2':
                 ksiazkaAdresowa.logowanieUzytkownika();
                 break;
             }
         } else {
-
-                    //Dodać PlikZAdresatami → czyAdresaciZostaliWczytani
-                //ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
-                //Przerzucic do logowanie uzytkownika
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
             switch (wybor) {
             case '1':
-                //Dodac AdresatManager
-                //ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
+                ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
                 break;

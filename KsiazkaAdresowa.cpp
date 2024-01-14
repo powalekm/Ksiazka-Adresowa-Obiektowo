@@ -34,8 +34,8 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
     return uzytkownikMenedzer.wybierzOpcjeZMenuUzytkownika();
 }
 
-void KsiazkaAdresowa::dodajAdresata(int IdZalogowanegoUzytkownika) {
-    adresatMenedzer.dodajAdresata(IdZalogowanegoUzytkownika);
+void KsiazkaAdresowa::dodajAdresata() {
+    adresatMenedzer.dodajAdresata();
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {

@@ -27,7 +27,6 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
     plikTekstowy.close();
 }
 
-
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
     string liniaZDanymiUzytkownika = "";
 
@@ -93,7 +92,7 @@ void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik>
         for (unsigned int i = 0; i < uzytkownicy.size(); i++) {
             liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownicy[i]);
 
-            if(i == (uzytkownicy.size() - 1)){
+            if(i == (uzytkownicy.size() - 1)) {
                 plikTekstowy << liniaZDanymiUzytkownika;
             } else {
                 plikTekstowy << liniaZDanymiUzytkownika << endl;
