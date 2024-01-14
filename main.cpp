@@ -18,18 +18,19 @@ int main() {
 
                 break;
             case '2':
-                ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
                 ksiazkaAdresowa.logowanieUzytkownika();
                 break;
             }
         } else {
-            if (ksiazkaAdresowa.czyAdresaciZostaliWczytani() == false) {
-                ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
-            }
+
+                    //Dodać PlikZAdresatami → czyAdresaciZostaliWczytani
+                //ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
+                //Przerzucic do logowanie uzytkownika
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
             switch (wybor) {
             case '1':
-                ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
+                //Dodac AdresatManager
+                //ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
                 break;
             case '2':
                 break;

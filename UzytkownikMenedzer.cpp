@@ -58,35 +58,39 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
-int UzytkownikMenedzer::logowanieUzytkownika() {
+void UzytkownikMenedzer::logowanieUzytkownika() {
+    bool odnalezionyUzytkownik = false;
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
-
     cout << endl << "Podaj login: " << endl;
     uzytkownik.ustawLogin(MetodyPomocnicze::wczytajLinie());
 
     unsigned int i = 0;
     while (i < uzytkownicy.size()) {
         if (MetodyPomocnicze::porownanieZnakow(uzytkownik.pobierzLogin(), uzytkownicy[i].pobierzLogin())) {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
+            odnalezionyUzytkownik = true;
+            for (int iloscProb = 2; iloscProb >= 0; iloscProb--) {
                 cout << "Podaj haslo: " << endl;
                 uzytkownik.ustawHaslo(MetodyPomocnicze::wczytajLinie());
-
                 if (uzytkownik.pobierzHaslo() == uzytkownicy[i].pobierzHaslo()) {
                     cout << "Uzytkownik zostal zalogowany pomyslnie." << endl;
                     system("pause");
-                    return uzytkownicy[i].pobierzId();
+                    ustawIdZalogowanegoUzytkownika(uzytkownicy[i].pobierzId());
+                    break;
+                }
+                cout << "Wprowadzone haslo jest nie prawidlowe. Pozostala liczba prob: " << iloscProb << endl;
+                if ( iloscProb == 0) {
+                    cout << "Nieprawidlowe logowanie." << endl;
+                    system("pause");
                 }
             }
-            cout << "Wprowadzono 3 razy bledne haslo." << endl;
-            system("pause");
-            return 0;
         }
         i++;
     }
-    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
-    system("pause");
-    return 0;
+    if (odnalezionyUzytkownik == false) {
+        cout << "Nie odnaleziono uzytkownika z podanym loginem." << endl << endl;
+        system("pause");
+    }
 }
 
 void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int noweId) {
