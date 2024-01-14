@@ -40,7 +40,6 @@ char MetodyPomocnicze::wczytajZnak() {
     return znak;
 }
 
-
 string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     string liczba = "";
     while(isdigit(tekst[pozycjaZnaku]) == true) {
@@ -49,7 +48,6 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     }
     return liczba;
 }
-
 
 int MetodyPomocnicze::konwersjaStringNaInt(string liczba) {
     int liczbaInt;

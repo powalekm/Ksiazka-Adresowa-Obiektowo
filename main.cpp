@@ -15,21 +15,16 @@ int main() {
             switch(wybor) {
             case '1':
                 ksiazkaAdresowa.rejestracjaUzytkownika();
-
                 break;
             case '2':
-                ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
                 ksiazkaAdresowa.logowanieUzytkownika();
                 break;
             }
         } else {
-            if (ksiazkaAdresowa.czyAdresaciZostaliWczytani() == false) {
-                ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
-            }
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
             switch (wybor) {
             case '1':
-                ksiazkaAdresowa.dodajAdresata(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika());
+                ksiazkaAdresowa.dodajAdresata();
                 break;
             case '2':
                 break;

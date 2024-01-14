@@ -1,45 +1,18 @@
 #include "AdresatMenedzer.h"
 
-void AdresatMenedzer::ustawIdOstatniegoAdresata(int noweId) {
-    idOstatniegoAdresata = noweId;
-}
-
-int AdresatMenedzer::pobierzIdOstatniegoAdresata() {
-    return idOstatniegoAdresata;
-}
-
 void AdresatMenedzer::czyszczenieListyAdresatow() {
     adresaci.clear();
 }
 
-void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
-    string nazwaPlikuZAdresatami = "Adresaci.txt";
-    Adresat adresat;
-    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
-    string daneOstaniegoAdresataWPliku = "";
-    fstream plikTekstowy;
-
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
-
-    if (plikTekstowy.good() == true) {
-        while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {
-            if(idZalogowanegoUzytkownika == pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami)) {
-                adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
-                adresaci.push_back(adresat);
-            }
-        }
-        daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
-    } else
-        cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
-
-    plikTekstowy.close();
-
-    if (daneOstaniegoAdresataWPliku != "") {
-        ustawIdOstatniegoAdresata(pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku));
-    } else
-        ustawIdOstatniegoAdresata(0);
+void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int noweId) {
+    if (noweId >= 0) {
+        idZalogowanegoUzytkownika = noweId;
+    }
 }
 
+int AdresatMenedzer::pobierzIdZalogowanegoUzytkownika() {
+    return idZalogowanegoUzytkownika;
+}
 
 Adresat AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami) {
     Adresat adresat;
@@ -80,41 +53,21 @@ Adresat AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionow
     return adresat;
 }
 
-int AdresatMenedzer::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
-    int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-    int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
-
-    return idUzytkownika;
-}
-
-int AdresatMenedzer::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
-    int pozycjaRozpoczeciaIdAdresata = 0;
-    int idAdresata = MetodyPomocnicze::konwersjaStringNaInt(MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata));
-    return idAdresata;
-}
-
-bool AdresatMenedzer::czyAdresaciZostaliWczytani() {
-    if (adresaci.empty() == true)
-        return false;
-    else {
-        return true;
-    }
-}
-
-void AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika) {
+void AdresatMenedzer::dodajAdresata() {
     Adresat adresat;
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika);
+    adresat = podajDaneNowegoAdresata(pobierzIdZalogowanegoUzytkownika());
     adresaci.push_back(adresat);
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-    ustawIdOstatniegoAdresata(pobierzIdOstatniegoAdresata() + 1);
+    plikZAdresatami.dopiszAdresataDoPliku(adresat); //
 }
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
     Adresat adresat;
 
-    adresat.ustawId(pobierzIdOstatniegoAdresata() + 1);
+    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
+    plikZAdresatami.ustawIdOstatniegoAdresata(adresat.pobierzId());
+
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";
@@ -145,6 +98,7 @@ string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
     return tekst;
 }
 
+
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {
     system("cls");
     if (!adresaci.empty()) {
@@ -167,4 +121,8 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
     cout << "Numer telefonu:     " << adresat.pobierzNumerTelefonu() << endl;
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
+}
+
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
+    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(pobierzIdZalogowanegoUzytkownika());
 }
