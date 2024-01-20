@@ -10,10 +10,6 @@ void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int noweId) {
     }
 }
 
-int AdresatMenedzer::pobierzIdZalogowanegoUzytkownika() {
-    return idZalogowanegoUzytkownika;
-}
-
 Adresat AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami) {
     Adresat adresat;
     string pojedynczaDanaAdresata = "";
@@ -57,12 +53,12 @@ void AdresatMenedzer::dodajAdresata() {
     Adresat adresat;
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = podajDaneNowegoAdresata(pobierzIdZalogowanegoUzytkownika());
+    adresat = podajDaneNowegoAdresata();
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat); //
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika) {
+Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
     Adresat adresat;
 
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
@@ -98,7 +94,6 @@ string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
     return tekst;
 }
 
-
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {
     system("cls");
     if (!adresaci.empty()) {
@@ -124,5 +119,5 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
 }
 
 void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(pobierzIdZalogowanegoUzytkownika());
+    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 }

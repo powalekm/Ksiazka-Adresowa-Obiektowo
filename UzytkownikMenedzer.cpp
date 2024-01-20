@@ -100,9 +100,6 @@ void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int noweId) {
 }
 
 string UzytkownikMenedzer::pobierzLoginZalogowanegoUzytkownika() {
-
-    int idZalogowanegoUzytkownika = pobierzIdZalogowanegoUzytkownika();
-
     unsigned int i = 0;
     while (i < uzytkownicy.size()) {
         if (idZalogowanegoUzytkownika == uzytkownicy[i].pobierzId()) {
@@ -117,7 +114,7 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
     return idZalogowanegoUzytkownika;
 }
 
-void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika) {
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     noweHaslo = MetodyPomocnicze::wczytajLinie();

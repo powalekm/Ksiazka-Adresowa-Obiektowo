@@ -17,7 +17,7 @@ class AdresatMenedzer {
     PlikZAdresatami plikZAdresatami;
 
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
+    Adresat podajDaneNowegoAdresata();
     string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     void wyswietlDaneAdresata(Adresat adresat);
 
@@ -26,13 +26,12 @@ public:
     ustawIdZalogowanegoUzytkownika(0);
     };
 
+    void ustawIdZalogowanegoUzytkownika(int noweId);
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     void czyszczenieListyAdresatow();
 
-    void ustawIdZalogowanegoUzytkownika(int noweId);
-    int pobierzIdZalogowanegoUzytkownika();
 };
 
 #endif
