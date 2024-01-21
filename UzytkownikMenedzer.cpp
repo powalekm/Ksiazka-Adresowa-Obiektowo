@@ -54,10 +54,6 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 void UzytkownikMenedzer::logowanieUzytkownika() {
     bool odnalezionyUzytkownik = false;
     Uzytkownik uzytkownik;
@@ -75,7 +71,7 @@ void UzytkownikMenedzer::logowanieUzytkownika() {
                 if (uzytkownik.pobierzHaslo() == uzytkownicy[i].pobierzHaslo()) {
                     cout << "Uzytkownik zostal zalogowany pomyslnie." << endl;
                     system("pause");
-                    ustawIdZalogowanegoUzytkownika(uzytkownicy[i].pobierzId());
+                    idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
                     break;
                 }
                 cout << "Wprowadzone haslo jest nie prawidlowe. Pozostala liczba prob: " << iloscProb << endl;
@@ -99,10 +95,11 @@ void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int noweId) {
     }
 }
 
+void UzytkownikMenedzer::wylogowanieUzytkownika() {
+    idZalogowanegoUzytkownika = 0;
+}
+
 string UzytkownikMenedzer::pobierzLoginZalogowanegoUzytkownika() {
-
-    int idZalogowanegoUzytkownika = pobierzIdZalogowanegoUzytkownika();
-
     unsigned int i = 0;
     while (i < uzytkownicy.size()) {
         if (idZalogowanegoUzytkownika == uzytkownicy[i].pobierzId()) {
@@ -117,7 +114,7 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
     return idZalogowanegoUzytkownika;
 }
 
-void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika(int idZalogowanegoUzytkownika) {
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika() {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     noweHaslo = MetodyPomocnicze::wczytajLinie();
@@ -166,4 +163,13 @@ char UzytkownikMenedzer::wybierzOpcjeZMenuUzytkownika() {
     cout << "Twoj wybor: ";
     wybor = MetodyPomocnicze::wczytajZnak();
     return wybor;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+    if (idZalogowanegoUzytkownika > 0) {
+        return true;
+    } else {
+        return false;
+    }
+
 }
