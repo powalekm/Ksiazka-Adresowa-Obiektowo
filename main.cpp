@@ -10,7 +10,7 @@ int main() {
 
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     do {
-        if(ksiazkaAdresowa.pobierzIdZalogowanegoUzytkownika() == 0) {
+        if(!ksiazkaAdresowa.czyUzytkownikJestZalogowany()) {
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
             switch(wybor) {
             case '1':

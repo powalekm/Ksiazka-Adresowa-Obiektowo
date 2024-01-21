@@ -13,8 +13,7 @@
 
 using namespace std;
 
-class UzytkownikMenedzer
-{
+class UzytkownikMenedzer {
     int idZalogowanegoUzytkownika;
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
@@ -26,11 +25,14 @@ class UzytkownikMenedzer
 
 public:
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
-    ustawIdZalogowanegoUzytkownika(0);
+        idZalogowanegoUzytkownika = 0;
+        uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
     };
 
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
+
+    bool czyUzytkownikJestZalogowany();
 
     void ustawIdZalogowanegoUzytkownika(int noweId);
     int pobierzIdZalogowanegoUzytkownika();
@@ -38,8 +40,8 @@ public:
 
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void wczytajUzytkownikowZPliku();
     void logowanieUzytkownika();
+    void wylogowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
 };
 
