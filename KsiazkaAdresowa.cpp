@@ -37,6 +37,10 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika() {
     return uzytkownikMenedzer.wybierzOpcjeZMenuUzytkownika();
 }
 
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
+    return uzytkownikMenedzer.czyUzytkownikJestZalogowany();
+}
+
 void KsiazkaAdresowa::dodajAdresata() {
     adresatMenedzer->dodajAdresata();
 }
@@ -45,6 +49,18 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
     adresatMenedzer->wyswietlWszystkichAdresatow();
 }
 
-bool KsiazkaAdresowa::czyUzytkownikJestZalogowany(){
-    return uzytkownikMenedzer.czyUzytkownikJestZalogowany();
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
+    adresatMenedzer->wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
+    adresatMenedzer->wyszukajAdresatowPoNazwisku();
+}
+
+void KsiazkaAdresowa::usunAdresata() {
+    adresatMenedzer->usunAdresata();
+}
+
+void KsiazkaAdresowa::edytujAdresata() {
+    adresatMenedzer->edytujAdresata();
 }

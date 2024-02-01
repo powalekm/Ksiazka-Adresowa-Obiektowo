@@ -19,6 +19,7 @@ public:
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     }
+
     bool czyUzytkownikJestZalogowany();
     int pobierzIdZalogowanegoUzytkownika();
     void rejestracjaUzytkownika();
@@ -32,4 +33,8 @@ public:
 
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void edytujAdresata();
+    void usunAdresata();
 };
