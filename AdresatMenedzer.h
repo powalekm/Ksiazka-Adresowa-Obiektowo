@@ -12,14 +12,15 @@
 using namespace std;
 
 class AdresatMenedzer {
+    PlikZAdresatami plikZAdresatami;
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector <Adresat> adresaci;
-    PlikZAdresatami plikZAdresatami;
 
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     Adresat podajDaneNowegoAdresata();
     string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
 
 public:
     AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -30,8 +31,12 @@ public:
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void edytujAdresata();
+    void usunAdresata();
     void czyszczenieListyAdresatow();
+    char wybierzOpcjeZMenuEdycja(int iteratorEdytowanegoAdresata);
 
 };
-
 #endif
